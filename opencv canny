@@ -10,8 +10,8 @@ using std::endl;
 
 Mat src, src_gray;
 Mat dst, detected_edges;
-int lowThreshold = 0;
-const int max_lowThreshold = 100;
+int lowThreshold = 5;
+const int max_lowThreshold = 30;
 const int ratio = 3;
 const int kernel_size = 3;
 const char* window_name = "Edge Map";
@@ -40,13 +40,9 @@ int main( int argc, char** argv )
   CannyThreshold(0, 0);
  
   Mat new_image = Mat::zeros( dst.size(), dst.type() );
-	double alpha = 1.0; /*< Simple contrast control */
-	int beta = 0;   	/*< Simple brightness control */
-	cout << " Basic Linear Transforms " << endl;
-	cout << "-------------------------" << endl;
-	cout << "* Enter the alpha value [1.0-3.0]: "; cin >> alpha;
-	cout << "* Enter the beta value [0-100]: ";	cin >> beta;
-    
+	double alpha = 2.0; /*< Simple contrast control */
+	int beta = 50;   	/*< Simple brightness control */
+	
     	for( int y = 0; y < dst.rows; y++ ) {
     	for( int x = 0; x < dst.cols; x++ ) {
         	for( int c = 0; c < dst.channels(); c++ ) {
